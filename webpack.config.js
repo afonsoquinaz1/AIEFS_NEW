@@ -3,6 +3,8 @@ const createExpoWebpackConfigAsync = require("@expo/webpack-config");
 module.exports = async function (env, argv) {
   const config = await createExpoWebpackConfigAsync(env, argv);
 
-  // Customize the config as needed
+  // Add polyfills for Node core modules
+  config.resolve.fallback = { crypto: false };
+
   return config;
 };
