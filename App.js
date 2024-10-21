@@ -16,7 +16,7 @@ import {
 import tw from "tailwind-react-native-classnames";
 import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
-
+import Logo from "./Logo";
 export default function App() {
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState([]); // Array to store all chat messages
@@ -35,7 +35,7 @@ export default function App() {
       toValue: isLoading ? loadingButtonWidth : screenWidth - 40,
       duration: 300,
       easing: Easing.ease,
-      useNativeDriver: Platform.OS !== "web", // Only use the native driver on mobile
+      useNativeDriver: false,
     }).start();
   }, [isLoading, screenWidth]);
 
@@ -118,7 +118,10 @@ export default function App() {
       <View style={[tw`flex-row items-center px-4 py-3`, styles.navbar]}>
         <TouchableOpacity
           onPress={() => Alert.alert("Home", "Navigate to Home")}
-        ></TouchableOpacity>
+        >
+          {" "}
+          <Logo width={50} height={50} />
+        </TouchableOpacity>
 
         <Animated.Text
           style={[
@@ -172,8 +175,10 @@ export default function App() {
             >
               <View
                 style={[
-                  tw`p-4 rounded-lg max-w-3/4`,
+                  tw`p-4 rounded-lg `,
                   message.fromUser ? tw`bg-blue-500` : tw`bg-gray-200`,
+                  ,
+                  { maxWidth: "75%" },
                 ]}
               >
                 <Text

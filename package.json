@@ -22,6 +22,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "0.74.5",
+    "react-native-svg": "^15.8.0",
     "react-native-web": "^0.19.13",
     "tailwind-react-native-classnames": "^1.5.1",
     "typescript": "~5.3.3"
