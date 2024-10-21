@@ -26,5 +26,9 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
+  "resolutions": {
+    "react-dom": "18.2.0",
+    "react": "18.2.0"
+  },
   "private": true
 }
