@@ -35,7 +35,7 @@ export default function App() {
       toValue: isLoading ? loadingButtonWidth : screenWidth - 40,
       duration: 300,
       easing: Easing.ease,
-      useNativeDriver: false,
+      useNativeDriver: Platform.OS !== "web", // Only use the native driver on mobile
     }).start();
   }, [isLoading, screenWidth]);
 
