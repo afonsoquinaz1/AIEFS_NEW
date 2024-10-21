@@ -175,7 +175,7 @@ export default function App() {
             >
               <View
                 style={[
-                  tw`p-4 rounded-lg `,
+                  tw`p-4 rounded-lg`,
                   message.fromUser ? tw`bg-blue-500` : tw`bg-gray-200`,
                   ,
                   { maxWidth: "75%" },
