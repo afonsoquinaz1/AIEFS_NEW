@@ -17,7 +17,7 @@ export default function App() {
   const textOpacity = useRef(new Animated.Value(1)).current;
 
   const user = {
-    name: "Afonso Quinaz",
+    name: "Username",
     image: "https://via.placeholder.com/50",
   };
 
