@@ -71,7 +71,7 @@ export default function App() {
 
     try {
       const response = await axios.post(
-        "https://taktik.app.n8n.cloud/webhook-test/deb798c3-4276-4b30-bf82-cda8047a7c9c",
+        "https://taktik.app.n8n.cloud/webhook-test/9baaa2a9-5d7e-4748-b905-c20964155a46",
         { message: inputText }
       );
 
