@@ -5,19 +5,20 @@ import axios from "axios";
 import Navbar from "./components/Navbar";
 import Chat from "./components/Chat";
 import MessageInput from "./components/MessageInput";
-
+import { API_URL, USER_NAME, APP_NAME } from "@env";
 export default function App() {
   const [inputText, setInputText] = useState("");
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [companyName, setCompanyName] = useState("EFS Consulting");
+  const [companyName, setCompanyName] = useState(APP_NAME);
+  const [username, setUsername] = useState(USER_NAME);
   const screenWidth = Dimensions.get("window").width;
 
   const animatedWidth = useRef(new Animated.Value(screenWidth - 40)).current;
   const textOpacity = useRef(new Animated.Value(1)).current;
 
   const user = {
-    name: "Username",
+    name: username,
     image: "https://via.placeholder.com/50",
   };
 
@@ -32,24 +33,6 @@ export default function App() {
     }).start();
   }, [isLoading, screenWidth]);
 
-  const animateTextChange = () => {
-    Animated.timing(textOpacity, {
-      toValue: 0,
-      duration: 300,
-      useNativeDriver: true,
-    }).start(() => {
-      setCompanyName(
-        companyName === "EFS Consulting" ? "EFS AI" : "EFS Consulting"
-      );
-
-      Animated.timing(textOpacity, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    });
-  };
-
   const handleSignOut = () => {
     Alert.alert("Sign Out", "You have been signed out.");
   };
@@ -61,7 +44,6 @@ export default function App() {
     }
 
     setIsLoading(true);
-    animateTextChange();
 
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -70,10 +52,7 @@ export default function App() {
     setInputText("");
 
     try {
-      const response = await axios.post(
-        "https://taktik.app.n8n.cloud/webhook-test/9baaa2a9-5d7e-4748-b905-c20964155a46",
-        { message: inputText }
-      );
+      const response = await axios.post(API_URL, { message: inputText });
 
       const responseData = response.data;
       if (typeof responseData === "object" && responseData.output) {

@@ -11,6 +11,7 @@ import {
 import tw from "tailwind-react-native-classnames";
 import { Ionicons } from "@expo/vector-icons";
 import Logo from "../Logo";
+import { THEME_COLOR } from "@env";
 
 interface NavbarProps {
   companyName: string;
@@ -67,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
 const styles = StyleSheet.create({
   navbar: {
-    backgroundColor: "#213B5E",
+    backgroundColor: THEME_COLOR,
   },
 });
 
